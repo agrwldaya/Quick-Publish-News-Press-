@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Mail, Phone, User, LogOut, ShoppingCart } from "lucide-react";
+import { Mail, User, LogOut, ShoppingCart, Linkedin } from "lucide-react";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { AuthSliceActions } from '@/Store/authSlice';
-import logo from '/logo022.png'
+import logo from '/logo022.png';
+
 export default function New_Nav02() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,25 +23,33 @@ export default function New_Nav02() {
     <nav className="bg-primary text-primary-foreground shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Left section - Contact icons */}
-
-        
+          {/* Left section - Logo and contact links */}
           <div className="flex items-center space-x-4">
-            <Link to='/'>
-            <img    
-                  src={logo}
-                  className="h-8  w-16 me-3 object-cover"
-                  alt="FlowBite Logo"/>
+            <Link to="/">
+              <img
+                src={logo}
+                className="h-8 w-16 me-3 object-cover"
+                alt="FlowBite Logo"
+              />
             </Link>
-        
-            <Link to="/contact" className="flex items-center hover:text-primary-foreground/80">
+
+            <a
+              href="mailto:dayaagrawal20@gmail.com"
+              className="flex items-center hover:text-primary-foreground/80 hover:underline"
+            >
               <Mail className="h-5 w-5 mr-1" />
-              <span className="hidden sm:inline">Email</span>
-            </Link>
-            <Link to="/call" className="flex items-center hover:text-primary-foreground/80">
-              <Phone className="h-5 w-5 mr-1" />
-              <span className="hidden sm:inline">Call</span>
-            </Link>
+              dayaagrawal20@gmail.com
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/dayashankar-agrawal-412a13256/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center hover:text-primary-foreground/80 hover:underline"
+            >
+              <Linkedin className="h-5 w-5 mr-1" />
+              <span className="hidden sm:inline">LinkedIn</span>
+            </a>
           </div>
 
           {/* Right section - Dropdown */}

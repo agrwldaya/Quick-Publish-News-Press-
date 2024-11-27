@@ -46,7 +46,7 @@ export default function EmpDeshbord({ HandleLevel }) {
        <div>
            <nav className="bg-slate-500 border-gray-200 dark:bg-gray-900">
                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                   <Link to="https://flowbite.com" className="flex items-center space-x-3 rtl:space-x-reverse">
+                   <Link   className="flex items-center space-x-3 rtl:space-x-reverse">
                        <img src={logo} className="h-8 w-16 object-cover" alt="Flowbite Logo" />
                        <img src={logo2} className="h-8 w-40 object-cover" alt="Flowbite Logo" />
                    </Link>

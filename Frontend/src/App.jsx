@@ -18,6 +18,7 @@ import UserMain01 from './components/UserMain01';
 import ClientMain from './components/Client/ClientMain';
 import WideAnimatedProfilePage from './components/Normaluser/UserProfile';
 import NewsCart from './components/Normaluser/NewsCart';
+ 
 
 export default function App() {
   // const [token,setToken] = useState(null)
@@ -46,7 +47,7 @@ export default function App() {
         <Route path="/employee_login" element={<EmployeeLogin />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/cancle" element={<Cancle />} />
-         <Route path="/newscart" element={<NewsCart />} />  
+         <Route path="/newscart" element={<NewsCart />} />    
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
