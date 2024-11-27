@@ -119,7 +119,7 @@ import { ClientAuthSliceActions } from "../../Frontend/src/Store/clientAuthSliec
     try {
       const {email} = req.body;
       const checkUserPresent = await   Clintmodel.findOne({ email });
-      console.log(email)
+     
       if (checkUserPresent) {
         return res.status(401).json({
           success: false,
@@ -151,7 +151,7 @@ import { ClientAuthSliceActions } from "../../Frontend/src/Store/clientAuthSliec
       
     });
   } catch (error) {
-    console.log(error.message);
+     
     return res.status(500).json({ success: false, error: error.message });
   }
 }
@@ -186,7 +186,7 @@ const clinte_Login = async (req, res) => {
             clinte,
         });
     } catch (error) {
-        console.log(error);
+         
         return res.status(500).json({
             success: false,
             message: "Error"  
@@ -197,7 +197,7 @@ const clinte_Login = async (req, res) => {
 const verif_company_mail = async (req, res) => {
     try {
         const { companyName, companyMail, password, otp } = req.body;
-           console.log(req.body)
+            
          
         if (!companyName || !companyMail || !otp || !password) {
             return res.status(402).json({
@@ -205,7 +205,7 @@ const verif_company_mail = async (req, res) => {
                 message: "All fields are required!"
             });
         }
-        console.log("hello")
+         
 
         // Check if the company mail already exists
         const checkMail = await Clintmodel.findOne({ companyMail });
@@ -218,7 +218,7 @@ const verif_company_mail = async (req, res) => {
  
         // Fetch the most recent OTP record for the given email
       const otpRecords = await Otpmodel.find({ email: companyMail }).sort({ createdAt: -1 }).limit(1);
-      console.log(otpRecords.length)
+       
         // Check if OTP record exists and if the provided OTP matches the most recent one
         if (!otpRecords.length || otp != otpRecords[0].otp) {
             return res.status(400).json({
@@ -320,7 +320,7 @@ const verif_company_mail = async (req, res) => {
         const logoresponse = await uploadFile(logo, process.env.FOLDER_NAME || 'default_folder');
        const logourl = logoresponse.url
         const uploadedDocumentsUrls = await response.url
-        console.log(logourl)
+         
 
         // Update client profile
         const updateClient = await Clintmodel.findByIdAndUpdate(

@@ -6,7 +6,7 @@ export const authMiddleware = async (req, res, next) => {
   try {
      
     let {token} = req.headers;
-    console.log(token)
+     
 
     if (!token) {
       return res.status(401).json({
@@ -16,7 +16,7 @@ export const authMiddleware = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // console.log(decoded)
+     
     req.body.userId = decoded.id;
     next();
   } catch (error) {

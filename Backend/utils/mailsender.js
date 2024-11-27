@@ -19,7 +19,7 @@ export const mailSender = async (email, title, body) => {
       html: body,
     });
 
-    console.log('Email sent: %s', info.messageId);
+     
     return info;
   } catch (error) {
     console.error('Error occurred while sending email: ', error);

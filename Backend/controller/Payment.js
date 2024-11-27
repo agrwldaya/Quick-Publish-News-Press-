@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.Secret_key);
 const HandlePayment = async (req, res) => {
     try {
         const { product } = req.body;
-        console.log("Received product:", product);
+         
 
         const line_items = [{
             price_data: {
@@ -26,7 +26,7 @@ const HandlePayment = async (req, res) => {
             cancel_url: "http://localhost:5173/cancel"
         });
         
-        console.log("Created session:", session);
+         
         res.json({
             id: session.id
         });

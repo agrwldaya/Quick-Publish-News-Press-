@@ -97,7 +97,7 @@ const Nu_Login = async (req, res) => {
 const Nu_signup = async (req, res) => {
   try {
     const { username, usermail, password, phoneNo, userState, userCity, userPincode, otp } = req.body;
-   console.log(req.body)
+    
     if (!username || !phoneNo || !usermail || !password || !userState || !userCity || !userPincode || !otp) {
       return res.status(400).json({
         success: false,
@@ -112,9 +112,9 @@ const Nu_signup = async (req, res) => {
         message: "User already exists!",
       });
     }
-    // console.log(checkMail)
+     
     const otpRecords = await Otpmodel.find({ email: usermail }).sort({ createdAt: -1 }).limit(1);
-    //console.log("otpRecords",otpRecords[0].otp)
+   
 
 
     if (otp != otpRecords[0].otp) {
@@ -123,10 +123,9 @@ const Nu_signup = async (req, res) => {
         message: "Invalid or expired OTP",
       }); 
     }
-    // console.log("Passworfd")
+   
     const hashedPassword = await bcrypt.hash(password, 10);
-    // console.log(hashedPassword)
-    // console.log("newUser")
+   
     const newUser = await  NormalUserModel.create({
       username,
       userCity,
@@ -137,7 +136,7 @@ const Nu_signup = async (req, res) => {
       password: hashedPassword,
       isprofileComplete: true,
     });
-  //  console.log("newUser",newUser)
+ 
      
     const token = jwt.sign({ id: newUser._id, email: usermail }, process.env.JWT_SECRET);
 
@@ -165,7 +164,7 @@ const submitLocalNews = async (req, res) => {
       eventPincode, wordSize, newspaper, message, publishedDate, nearestCenterPc, userId,
     } = req.body;
 
-    //console.log(req.body)
+     
 
     if (!headline || !body || !eventDate || !eventLocation || !eventState || !eventCity ||
       !eventPincode || !wordSize || !newspaper || !message || !price ||
@@ -176,7 +175,7 @@ const submitLocalNews = async (req, res) => {
       });
     }
 
-    //console.log("req.files",req.files)
+   
     let uploadedImagesUrls = [];
     if (req.files && req.files.images) {
       const images = Array.isArray(req.files.images) ? req.files.images : [req.files.images];
@@ -198,7 +197,7 @@ const submitLocalNews = async (req, res) => {
       });
       uploadedImagesUrls = await Promise.all(uploadImagesPromises);
     }
-  // console.log( "uploadedImagesUrls",uploadedImagesUrls)
+ 
     const employee = await EmployeeModel.findOne({
       pincode: nearestCenterPc,
       empCompany: newspaper,
@@ -234,10 +233,8 @@ const submitLocalNews = async (req, res) => {
     await localNews.save();
     
 
-  //  console.log("localNews",localNews)
-///const savedLocalNews = await LocalNewsCart.findById(localNews._id);
-//console.log("Saved document from database:", savedLocalNews);
-
+ 
+ 
     // Update Employee and User models
     await EmployeeModel.findByIdAndUpdate(
       { _id: employee._id },
@@ -292,7 +289,7 @@ const submitAdNews = async (req, res) => {
     }
 
     const { adImage, companyProof } = req.files;
-    console.log("req.files",req.files)
+     
 
     const supportedTypes = ["jpg", "jpeg", "png", "pdf"];
 
@@ -317,8 +314,7 @@ const submitAdNews = async (req, res) => {
     // Upload files
     const uploadedImageUrl = await uploadFile(adImage, process.env.FOLDER_NAME || 'default_folder');
     const uploadedDocUrl = await uploadFile(companyProof, process.env.FOLDER_NAME || 'default_folder');
-    console.log(uploadedImageUrl)
-    console.log(uploadedDocUrl)
+ 
 
     // Find the nearest employee
     const employee = await EmployeeModel.findOne({
@@ -387,7 +383,7 @@ const submitAdNews = async (req, res) => {
 // Get User Information
 const getUserInfo = async (req, res) => {
   try {
-  //  console.log(req.body);
+ 
     
     // Fetch the user and populate cart fields
     const user = await NormalUserModel.findOne({ _id: req.body.userId })
@@ -478,7 +474,7 @@ const getUserInfo = async (req, res) => {
 const localNewsPayment = async (req, res) => {
   try {
     const { paymentId, userId } = req.body;
-    console.log("Local",req.body)
+     
     // Check if required fields are provided
     if (!paymentId || !userId) {
       return res.status(400).json({
@@ -489,7 +485,7 @@ const localNewsPayment = async (req, res) => {
     // Find the latest LocalNewsCart entry for the specified user
     const latestNewsEntry = await LocalNewsCart.findOne({ userDetail:userId }).sort({ createdAt: -1 });
      
-    //console.log(latestNewsEntry)
+     
     if (!latestNewsEntry) {
       return res.status(404).json({
         success: false,
@@ -533,7 +529,7 @@ const localNewsPayment = async (req, res) => {
 const AdNewsPayment = async (req, res) => {
   try { 
     const { paymentId, userId } = req.body; // Accept userId to track the user
-    console.log("Ad", req.body);
+   
     
     // Check if required fields are provided
     if (!paymentId || !userId) {
@@ -559,7 +555,7 @@ const AdNewsPayment = async (req, res) => {
       { $set: { paymentId, isPaymentDone: true } },
       { new: true }
     );
-    console.log(updatedAdNewsEntry)
+     
 
     // Check if the update was successful
     if (!updatedAdNewsEntry) {

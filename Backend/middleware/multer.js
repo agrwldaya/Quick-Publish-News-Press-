@@ -16,10 +16,10 @@ export const uploadWithDestination = (arrayFieldName, maxCount) => {
     });
 
     const upload = multer({ storage }).array(arrayFieldName, maxCount);
-  console.log("hii")
+  
     return (req, res, next) => {
         upload(req, res, (err) => {
-            console.log(req.files)
+             
             if (err instanceof multer.MulterError) {
                 cleanupUploadedFiles(req.files);
                 return res.status(400).send('Error uploading files: ' + err.message);

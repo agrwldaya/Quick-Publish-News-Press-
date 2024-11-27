@@ -16,8 +16,14 @@ const app = express();
 const Port = process.env.PORT || 4001;
 
 // Middleware configuration
+
+app.use(cors({
+  origin:["https://deploy-quick-publish.vercel.app"],
+  methods:["POST","GET"],
+  credentials:true
+}));
+
 app.use(express.json());
-app.use(cors({}));
 
 app.use(fileUpload({
   useTempFiles: true,

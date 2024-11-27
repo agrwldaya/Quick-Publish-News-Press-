@@ -65,7 +65,7 @@ const get_news = async (req, res) => {
          
         const { userId } = req.body;
 
-       console.log("helll")
+        
         const emp = await EmployeeModel.findById(userId)
             .populate('allLocalNewsCart')
             .populate('allAdNewsCart')
