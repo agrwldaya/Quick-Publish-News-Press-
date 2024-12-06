@@ -52,12 +52,13 @@ export default function LocalForm({  handleStep}) {
         calculatedPrice = 50; // default minimum price if no valid word size is selected
     }
       
-    const finalPrice = (Math.max(calculatedPrice, 50))*80;
+    const finalPrice = Math.round((Math.max(calculatedPrice, 50)) * 80);
+
 
     setFormData((prevData) => ({
       ...prevData,
       wordSize: selectedSize,
-      price: finalPrice,
+      price: Math.round(finalPrice),
     }));
     setPrice(finalPrice);
   };

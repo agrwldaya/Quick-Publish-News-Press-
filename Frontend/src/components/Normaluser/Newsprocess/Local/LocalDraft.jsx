@@ -33,6 +33,7 @@ export default function DraftPage() {
     if (localNewData) {
       const imagesUrl = localNewData.images ? URL.createObjectURL(localNewData.images) : null;
       setDraftData({ ...localNewData, images: imagesUrl });
+      draftData.price = Math.floor(draftData.price) 
 
       return () => {
         if (imagesUrl) URL.revokeObjectURL(imagesUrl);
@@ -78,7 +79,7 @@ export default function DraftPage() {
       const stripe = await loadStripe("pk_test_51PSt3t08e0elFpfHmHJWuYMBDN6lH4lv70KB97nICq2JMHLsYnpa16lqDaOYORRASMTgbTxLewb1KJScLwHrRKc800H5Fy4RNi");
       const productData = {
         contentType: "LocalNews",
-        price: (localNewData.price ? Number(localNewData.price) : 0)
+        price: Math.floor(localNewData.price ? Number(localNewData.price) : 0)
       };
        
       const response = await axios.post(
