@@ -1,7 +1,6 @@
 'use client'
 import profilepic from '../../../public/profile_pic.jpg'
 import React, { useState } from 'react'
-import Navbar02 from '../NabBar02'
 import New_Nav02 from '../New_Nav02'
 
 export default function WideAnimatedProfilePage() {

@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import NewsCartLocal from './NewsCartLocal'
  
 import AdNewsCart from './NewsCartAd'
-import Navbar02 from '../NabBar02'
+ 
 import New_Nav02 from '../New_Nav02'
+ 
 
  
 
