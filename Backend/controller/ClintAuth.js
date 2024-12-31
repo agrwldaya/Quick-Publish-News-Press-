@@ -8,7 +8,7 @@ import cloudinary from 'cloudinary';
  
 import { EmployeeModel } from "../model/employesUser.js";
 import NewsPaperModel from "../model/newspaper.js";
-import { ClientAuthSliceActions } from "../../Frontend/src/Store/clientAuthSliece.js";
+ 
 
  const uploadFile = async (file, folder, quality) => {
   const options = { folder, resource_type: "auto" };
