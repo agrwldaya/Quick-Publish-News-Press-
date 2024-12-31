@@ -1,5 +1,5 @@
 import { EmployeeModel } from "../model/employesUser.js";
-import bcrypt from 'bcrypt'
+import bcrypt  from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { LocalNewsCart } from "../model/localNewsCart.js";
 import { AdNewsCart } from "../model/adNewsCart.js";

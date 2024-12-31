@@ -4,7 +4,7 @@ import { NormalUserModel } from "../model/normalUser.js";
 import { LocalNewsCart } from "../model/localNewsCart.js";
 import { EmployeeModel } from "../model/employesUser.js";
 import { AdNewsCart } from "../model/adNewsCart.js";
-import bcrypt from 'bcrypt';
+import bcrypt  from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 import otpGenerator from 'otp-generator';
 import Otpmodel from '../model/otp.js';
