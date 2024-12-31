@@ -11,7 +11,7 @@ import { NewsPaperRoute } from './routes/NewsRoute.js';
 import paymentRoute from './routes/paymentRoute.js';
 
 const app = express();
-const Port = process.env.PORT || 4001;
+const Port = process.env.PORT || 4000;
 
 // Middleware configuration
 app.use(express.json());

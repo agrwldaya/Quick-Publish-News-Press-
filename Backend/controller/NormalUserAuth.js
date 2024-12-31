@@ -58,6 +58,7 @@ const Nu_sendOtp = async (req, res) => {
 const Nu_Login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
     const user = await NormalUserModel.findOne({ usermail: email });
 
     if (!user) {
